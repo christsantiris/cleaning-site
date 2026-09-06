@@ -168,7 +168,15 @@ img { max-width: 100%; display: block; }
   color: #fff;
   font-size: 1rem;
 }
-.logo-text em { color: var(--color-primary); font-style: normal; }
+.logo-text { color: var(--color-primary); }
+.logo-text em { color: inherit; font-style: normal; }
+
+/* Brand name always renders in the brand color so it stands out in body copy. */
+.brand { color: var(--color-primary); font-weight: 600; }
+/* The footer sits on --color-ink, where the standard teal drops to 4.05:1.
+   Use the lighter dark-mode teal there so the name stays prominent. */
+.site-footer .brand,
+.footer-brand .logo-text { color: #249ea4; }
 
 .nav {
   display: flex;
@@ -218,6 +226,10 @@ img { max-width: 100%; display: block; }
   font-size: clamp(2rem, 4vw, 3.1rem);
   margin-bottom: 0.4em;
 }
+/* Each sentence wraps as a unit so a line never breaks mid-sentence.
+   inline-block (not block) lets a sentence still wrap internally on
+   narrow screens rather than overflowing. */
+.hero h1 span { display: inline-block; }
 .hero-sub { font-size: 1.05rem; max-width: 46ch; }
 .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin: 28px 0; }
 .hero-trust {
@@ -239,8 +251,8 @@ img { max-width: 100%; display: block; }
   width: 230px;
   padding: 22px;
   border-radius: var(--radius-lg);
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
   box-shadow: var(--shadow-md);
 }
 .hero-card .badge {
@@ -249,17 +261,15 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-primary);
-  background: var(--color-primary-light);
+  color: #fff;
+  background: rgba(255,255,255,0.2);
   padding: 4px 10px;
   border-radius: 999px;
   margin-bottom: 10px;
 }
-.hero-card strong { font-family: var(--font-heading); font-size: 1.15rem; display: block; }
+.hero-card strong { font-family: var(--font-heading); font-size: 1.15rem; display: block; color: #fff; }
 .card-1 { top: 10px; left: 0; }
-.card-2 { bottom: 10px; right: 0; background: var(--color-primary); border-color: var(--color-primary); }
-.card-2 .badge { background: rgba(255,255,255,0.2); color: #fff; }
-.card-2 strong { color: #fff; }
+.card-2 { bottom: 10px; right: 0; }
 
 /* ---------- Strip ---------- */
 .strip { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: var(--color-bg-alt); padding: 20px 0; }
@@ -513,7 +523,7 @@ a.contact-detail:hover {
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .footer-brand { max-width: 320px; }
-.footer-brand .logo-text { color: #fff; font-family: var(--font-heading); font-weight: 700; margin-left: 8px; }
+.footer-brand .logo-text { font-family: var(--font-heading); font-weight: 700; margin-left: 8px; }
 .footer-brand em { color: var(--color-primary); font-style: normal; }
 .footer-brand p { margin-top: 14px; font-size: 0.9rem; color: #9fb0aa; }
 .footer-links { display: flex; gap: 64px; }
