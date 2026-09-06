@@ -17,13 +17,16 @@ nav.querySelectorAll('a').forEach((link) => {
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Contact form (visual only — not yet wired up to a submission service)
+// Contact form (visual only — not yet wired up to a submission service).
+// The form is currently not rendered, so bail out if it isn't on the page.
 const form = document.getElementById('quoteForm');
 const status = document.getElementById('formStatus');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  form.reset();
-  status.textContent = "Thanks! We'll be in touch within one business day.";
-  status.classList.add('success');
-});
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    form.reset();
+    status.textContent = "Thanks! We'll be in touch within one business day.";
+    status.classList.add('success');
+  });
+}

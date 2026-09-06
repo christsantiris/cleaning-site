@@ -423,28 +423,51 @@ img { max-width: 100%; display: block; }
 .pricing-note { text-align: center; margin-top: 40px; font-size: 0.88rem; }
 
 /* ---------- Contact ---------- */
-.contact-inner {
+.contact-details {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 56px;
-  align-items: start;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
-.contact-copy h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
-.contact-details { display: flex; flex-direction: column; gap: 18px; margin-top: 32px; }
 .contact-detail {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 16px 18px;
+  text-align: center;
+  gap: 14px;
+  padding: 32px 22px;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
-a.contact-detail:hover { border-color: var(--color-primary); }
-.contact-icon { font-size: 1.3rem; }
-.contact-detail strong { display: block; font-size: 0.9rem; }
-.contact-detail span { font-size: 0.88rem; color: var(--color-ink-soft); }
+a.contact-detail:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.contact-detail strong { display: block; font-size: 0.95rem; margin-bottom: 4px; }
+.contact-detail div span { font-size: 0.88rem; color: var(--color-ink-soft); overflow-wrap: anywhere; }
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+.contact-note { text-align: center; margin: 20px 0 0; font-size: 0.88rem; }
 
 .contact-form {
   background: var(--color-bg);
@@ -500,9 +523,24 @@ a.contact-detail:hover { border-color: var(--color-primary); }
 .footer-bottom { padding-top: 24px; font-size: 0.82rem; color: #7f9189; }
 
 /* ---------- Responsive ---------- */
+/* The staggered hero cards are absolutely positioned at a fixed 230px, so they
+   collide once .hero-art is narrower than ~460px. Below that, lay them out in
+   normal flow: auto-fit drops from two columns to one when space runs out. */
+@media (max-width: 1120px) {
+  .hero-art {
+    position: static;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+  }
+  .hero-card { position: static; width: auto; }
+}
+
 @media (max-width: 960px) {
-  .hero-inner, .why-grid, .contact-inner { grid-template-columns: 1fr; }
-  .hero-art { height: 220px; margin-top: 20px; }
+  .hero-inner, .why-grid { grid-template-columns: 1fr; }
+  .contact-details { grid-template-columns: 1fr 1fr; }
+  .hero-art { margin-top: 20px; }
   .services-grid, .testimonial-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
   .price-card.featured { transform: none; }
 }
@@ -512,7 +550,8 @@ a.contact-detail:hover { border-color: var(--color-primary); }
   .nav.open { transform: translateX(0); }
   .nav-cta { width: 100%; text-align: center; }
   .nav-toggle { display: flex; }
-  .services-grid, .testimonial-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .services-grid, .testimonial-grid, .pricing-grid, .contact-details { grid-template-columns: 1fr; }
+  .contact-actions .btn { width: 100%; }
   .form-row { grid-template-columns: 1fr; }
   .hero { padding: 48px 0 40px; }
   .section { padding: 64px 0; }
