@@ -1,8 +1,8 @@
 /* ---------- Design tokens ---------- */
 :root {
-  --color-primary: #0e7c66;
-  --color-primary-dark: #0a5c4c;
-  --color-primary-light: #e6f4f0;
+  --color-primary: #098e94;
+  --color-primary-dark: #0a585c;
+  --color-primary-light: #e6f3f4;
   --color-accent: #f2a154;
   --color-ink: #1c2321;
   --color-ink-soft: #4b5a56;
@@ -20,9 +20,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-primary: #24a487;
-    --color-primary-dark: #1a7d67;
-    --color-primary-light: #123029;
+    --color-primary: #249ea4;
+    --color-primary-dark: #1a797d;
+    --color-primary-light: #122f30;
     --color-ink: #eef3f1;
     --color-ink-soft: #a9b8b3;
     --color-bg: #101614;
@@ -34,9 +34,9 @@
 }
 
 :root[data-theme="dark"] {
-  --color-primary: #24a487;
-  --color-primary-dark: #1a7d67;
-  --color-primary-light: #123029;
+  --color-primary: #249ea4;
+  --color-primary-dark: #1a797d;
+  --color-primary-light: #122f30;
   --color-ink: #eef3f1;
   --color-ink-soft: #a9b8b3;
   --color-bg: #101614;
@@ -47,9 +47,9 @@
 }
 
 :root[data-theme="light"] {
-  --color-primary: #0e7c66;
-  --color-primary-dark: #0a5c4c;
-  --color-primary-light: #e6f4f0;
+  --color-primary: #098e94;
+  --color-primary-dark: #0a585c;
+  --color-primary-light: #e6f3f4;
   --color-ink: #1c2321;
   --color-ink-soft: #4b5a56;
   --color-bg: #ffffff;
